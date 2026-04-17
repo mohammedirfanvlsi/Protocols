@@ -1,27 +1,29 @@
 module transmitter #(
-  parameter data_width = 8
-)(
-  input clk, rst,
+  parameter data_width = 8)
+  (
+  input clk, rst_n,
   input tx_en,
   input tx_tick,
   input [data_width-1:0] data_in,
   output reg tx,
   output busy
 );
-
+localparam IDLE=2'b00, START=2'b01, DATA=2'b10, STOP=2'b11;
+  reg [1:0] state;
   reg [data_width-1:0] shift_reg;
   reg [3:0] bit_count;
 
-  parameter IDLE=0, START=1, DATA=2, STOP=3;
-  reg [1:0] state;
+  
 
-  always @(posedge clk or negedge rst) begin
-    if(!rst) begin
+  always @(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
       state <= IDLE;
       tx <= 1;
       bit_count <= 0;
     end
-    else if(tx_tick) begin
+    else begin
+
+if(tx_tick) begin
       case(state)
 
         IDLE: begin
@@ -55,7 +57,7 @@ module transmitter #(
       endcase
     end
   end
-
+end
   assign busy = (state != IDLE);
 
 endmodule

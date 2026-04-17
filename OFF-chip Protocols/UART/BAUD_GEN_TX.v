@@ -1,19 +1,17 @@
 module tx_baud_generator #(
   parameter sys_clk = 50_000_000, 
-  parameter baud_rate = 9600
-) (
-  input clk, rst, baud_en,
-  output reg tx_tick
-);
-  localparam integer tx_cycle = sys_clk / baud_rate; // transmitter cycle
+  parameter baud_rate = 9600)
   
-  localparam tx_bit = $clog2(tx_cycle); //transmission bit size to complete the cycle
+  (input clk, rst_n, baud_en,
+  output reg tx_tick);
+
+  localparam integer tx_cycle = sys_clk / baud_rate;
   
-  reg [tx_bit-1: 0] tx_count;
+  reg [15:0] tx_count;
   
-  always @(posedge clk or negedge rst) begin // generating transmission tick
+  always @(posedge clk or negedge rst_n) begin 
     
-    if(!rst) begin
+    if(!rst_n) begin
       tx_count<=0;
       tx_tick<=0;
     end

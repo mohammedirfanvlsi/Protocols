@@ -1,7 +1,7 @@
 module receiver #(
-  parameter data_width = 8
-)(
-  input clk, rst,
+  parameter data_width = 8)
+  (
+  input clk, rst_n,
   input rx,
   input rx_tick,
   output reg done,
@@ -12,18 +12,20 @@ module receiver #(
   reg [3:0] bit_count;
   reg [3:0] tick_count;
 
-  parameter IDLE=0, START=1, DATA=2, STOP=3;
+  localparam IDLE=2'b00, START=2'b01, DATA=2'b10, STOP=2'b11;
   reg [1:0] state;
 
-  always @(posedge clk or negedge rst) begin
-    if(!rst) begin
+  always @(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
       state <= IDLE;
       done <= 0;
       data_out <= 0;
       bit_count <= 0;
       tick_count <= 0;
     end
-    else if(rx_tick) begin
+    else begin
+
+  if(rx_tick) begin
       done <= 0;
 
       case(state)
@@ -69,4 +71,5 @@ module receiver #(
       endcase
     end
   end
+end
 endmodule

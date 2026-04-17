@@ -1,19 +1,13 @@
 module rx_baud_generator #(
   parameter sys_clk = 50_000_000, 
-  parameter baud_rate = 9600
-) (
-  input clk, rst, baud_en,
-  output reg rx_tick
-);
-  localparam integer rx_cycle = sys_clk / ( baud_rate * 16); // receiver cycle
- 
-  localparam rx_bit = $clog2(rx_cycle); //receiving bit size to complete the cycle
+  parameter baud_rate = 9600) (input clk, rst_n, baud_en, output reg rx_tick);
+  localparam integer rx_cycle = sys_clk / ( baud_rate * 16); 
   
-  reg [rx_bit-1: 0] rx_count;
+  reg [15:0] rx_count;
   
-  always @(posedge clk or negedge rst) begin // generating transmission tick
+  always @(posedge clk or negedge rst_n) begin 
     
-    if(!rst) begin
+    if(!rst_n) begin
       rx_count<=0;
       rx_tick<=0;
     end
