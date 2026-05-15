@@ -1,0 +1,768 @@
+$date
+	Fri May 15 12:42:45 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module tb_apb_top $end
+$var wire 8 ! apb_read_data_out [7:0] $end
+$var reg 9 " apb_read_addr [8:0] $end
+$var reg 9 # apb_write_addr [8:0] $end
+$var reg 8 $ apb_write_data [7:0] $end
+$var reg 1 % clk $end
+$var reg 1 & read_write $end
+$var reg 1 ' rst_n $end
+$var reg 1 ( transfer $end
+$scope module dut $end
+$var wire 9 ) apb_read_addr [8:0] $end
+$var wire 9 * apb_write_addr [8:0] $end
+$var wire 8 + apb_write_data [7:0] $end
+$var wire 1 % clk $end
+$var wire 1 & read_write $end
+$var wire 1 ' rst_n $end
+$var wire 1 ( transfer $end
+$var wire 1 , pwrite $end
+$var wire 8 - pwdata [7:0] $end
+$var wire 1 . psel2 $end
+$var wire 1 / psel1 $end
+$var wire 1 0 pready2 $end
+$var wire 1 1 pready1 $end
+$var wire 1 2 pready $end
+$var wire 8 3 prdata2 [7:0] $end
+$var wire 8 4 prdata1 [7:0] $end
+$var wire 8 5 prdata [7:0] $end
+$var wire 1 6 penable $end
+$var wire 9 7 paddr [8:0] $end
+$var wire 8 8 apb_read_data_out [7:0] $end
+$scope module u_master $end
+$var wire 9 9 apb_read_addr [8:0] $end
+$var wire 9 : apb_write_addr [8:0] $end
+$var wire 8 ; apb_write_data [7:0] $end
+$var wire 1 % clk $end
+$var wire 8 < prdata [7:0] $end
+$var wire 1 2 pready $end
+$var wire 1 & read_write $end
+$var wire 1 ' rst_n $end
+$var wire 1 ( transfer $end
+$var parameter 2 = access $end
+$var parameter 2 > idle $end
+$var parameter 2 ? setup $end
+$var reg 8 @ apb_read_data_out [7:0] $end
+$var reg 2 A next_state [1:0] $end
+$var reg 9 B paddr [8:0] $end
+$var reg 1 6 penable $end
+$var reg 8 C pwdata [7:0] $end
+$var reg 1 , pwrite $end
+$var reg 1 / sel1 $end
+$var reg 1 . sel2 $end
+$var reg 2 D state [1:0] $end
+$upscope $end
+$scope module u_slave1 $end
+$var wire 1 % clk $end
+$var wire 9 E paddr [8:0] $end
+$var wire 1 6 penable $end
+$var wire 8 F prdata1 [7:0] $end
+$var wire 1 / psel $end
+$var wire 8 G pwdata [7:0] $end
+$var wire 1 , pwrite $end
+$var wire 1 ' rst_n $end
+$var reg 1 1 pready1 $end
+$var reg 8 H reg_addr [7:0] $end
+$upscope $end
+$scope module u_slave2 $end
+$var wire 1 % clk $end
+$var wire 9 I paddr [8:0] $end
+$var wire 1 6 penable $end
+$var wire 8 J prdata2 [7:0] $end
+$var wire 1 . psel $end
+$var wire 8 K pwdata [7:0] $end
+$var wire 1 , pwrite $end
+$var wire 1 ' rst_n $end
+$var reg 1 0 pready2 $end
+$var reg 8 L reg_addr [7:0] $end
+$upscope $end
+$upscope $end
+$scope task read_apb $end
+$var reg 9 M addr [8:0] $end
+$upscope $end
+$scope task write_apb $end
+$var reg 9 N addr [8:0] $end
+$var reg 8 O data [7:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1 ?
+b0 >
+b10 =
+$end
+#0
+$dumpvars
+bx O
+bx N
+bx M
+bx L
+b0 K
+bx J
+b0 I
+bx H
+b0 G
+bx F
+b0 E
+b0 D
+b0 C
+b0 B
+b0 A
+b0 @
+b0 <
+b0 ;
+b0 :
+b0 9
+b0 8
+b0 7
+06
+b0 5
+bx 4
+bx 3
+02
+01
+00
+0/
+0.
+b0 -
+0,
+b0 +
+b0 *
+b0 )
+0(
+0'
+0&
+0%
+b0 $
+b0 #
+b0 "
+b0 !
+$end
+#5
+1%
+#10
+0%
+#15
+b1010 O
+b101 N
+1'
+1%
+#20
+0%
+#25
+b1 A
+b1010 $
+b1010 +
+b1010 ;
+b101 #
+b101 *
+b101 :
+1(
+1%
+#30
+0%
+#35
+b10 A
+1/
+b1010 -
+b1010 C
+b1010 G
+b1010 K
+b101 7
+b101 B
+b101 E
+b101 I
+1,
+b1 D
+1%
+#40
+0%
+#45
+16
+1,
+b101 7
+b101 B
+b101 E
+b101 I
+b1010 -
+b1010 C
+b1010 G
+b1010 K
+1/
+b10 D
+1%
+#50
+0%
+#55
+b1 A
+1,
+b101 7
+b101 B
+b101 E
+b101 I
+b1010 -
+b1010 C
+b1010 G
+b1010 K
+1/
+16
+12
+b1010 4
+b1010 F
+11
+1%
+#60
+0%
+#65
+b10 A
+1,
+b101 7
+b101 B
+b101 E
+b101 I
+b1010 -
+b1010 C
+b1010 G
+b1010 K
+1/
+06
+b1 D
+b10100 O
+b1000 N
+0(
+1%
+#70
+0%
+#75
+02
+01
+bx 4
+bx F
+b10 A
+06
+1,
+b1000 7
+b1000 B
+b1000 E
+b1000 I
+b10100 -
+b10100 C
+b10100 G
+b10100 K
+1/
+b1 D
+b10100 $
+b10100 +
+b10100 ;
+b1000 #
+b1000 *
+b1000 :
+1(
+1%
+#80
+0%
+#85
+16
+1,
+b1000 7
+b1000 B
+b1000 E
+b1000 I
+b10100 -
+b10100 C
+b10100 G
+b10100 K
+1/
+b10 D
+1%
+#90
+0%
+#95
+b1 A
+1,
+b1000 7
+b1000 B
+b1000 E
+b1000 I
+b10100 -
+b10100 C
+b10100 G
+b10100 K
+1/
+16
+12
+b10100 4
+b10100 F
+11
+1%
+#100
+0%
+#105
+b10 A
+1,
+b1000 7
+b1000 B
+b1000 E
+b1000 I
+b10100 -
+b10100 C
+b10100 G
+b10100 K
+1/
+06
+b1 D
+1%
+#110
+0%
+#115
+bx 4
+bx F
+02
+01
+b0 A
+06
+0,
+b0 7
+b0 B
+b0 E
+b0 I
+b0 -
+b0 C
+b0 G
+b0 K
+0/
+b0 D
+b11110 O
+b1111 N
+0(
+1%
+#120
+0%
+#125
+b1 A
+b11110 $
+b11110 +
+b11110 ;
+b1111 #
+b1111 *
+b1111 :
+1(
+1%
+#130
+0%
+#135
+b10 A
+1/
+b11110 -
+b11110 C
+b11110 G
+b11110 K
+b1111 7
+b1111 B
+b1111 E
+b1111 I
+1,
+b1 D
+1%
+#140
+0%
+#145
+16
+1,
+b1111 7
+b1111 B
+b1111 E
+b1111 I
+b11110 -
+b11110 C
+b11110 G
+b11110 K
+1/
+b10 D
+1%
+#150
+0%
+#155
+b1 A
+1,
+b1111 7
+b1111 B
+b1111 E
+b1111 I
+b11110 -
+b11110 C
+b11110 G
+b11110 K
+1/
+16
+12
+b11110 4
+b11110 F
+11
+1%
+#160
+0%
+#165
+b10 A
+1,
+b1111 7
+b1111 B
+b1111 E
+b1111 I
+b11110 -
+b11110 C
+b11110 G
+b11110 K
+1/
+06
+b1 D
+b101 M
+0(
+1%
+#170
+0%
+#175
+02
+01
+b1010 4
+b1010 F
+b1010 5
+b1010 <
+b10 A
+06
+0,
+b101 7
+b101 B
+b101 E
+b101 I
+b0 -
+b0 C
+b0 G
+b0 K
+1/
+b1 D
+b101 "
+b101 )
+b101 9
+1&
+1(
+1%
+#180
+0%
+#185
+16
+b101 7
+b101 B
+b101 E
+b101 I
+1/
+b10 D
+1%
+#190
+0%
+#195
+b1 A
+b101 7
+b101 B
+b101 E
+b101 I
+1/
+16
+12
+b101 H
+11
+1%
+#200
+0%
+#205
+b10 A
+b101 7
+b101 B
+b101 E
+b101 I
+1/
+06
+b1010 !
+b1010 8
+b1010 @
+b1 D
+1%
+#210
+0%
+#215
+16
+b101 7
+b101 B
+b101 E
+b101 I
+1/
+02
+b10 D
+01
+1%
+#220
+0%
+#225
+b1 A
+b101 7
+b101 B
+b101 E
+b101 I
+1/
+16
+12
+11
+1%
+#230
+0%
+#235
+b10 A
+b101 7
+b101 B
+b101 E
+b101 I
+1/
+06
+b1 D
+b1000 M
+0(
+1%
+#240
+0%
+#245
+02
+01
+b10100 5
+b10100 <
+b10100 4
+b10100 F
+b10 A
+06
+b1000 7
+b1000 B
+b1000 E
+b1000 I
+1/
+b1 D
+b1000 "
+b1000 )
+b1000 9
+1(
+1%
+#250
+0%
+#255
+16
+b1000 7
+b1000 B
+b1000 E
+b1000 I
+1/
+b10 D
+1%
+#260
+0%
+#265
+b1 A
+b1000 7
+b1000 B
+b1000 E
+b1000 I
+1/
+16
+12
+b1000 H
+11
+1%
+#270
+0%
+#275
+b10 A
+b1000 7
+b1000 B
+b1000 E
+b1000 I
+1/
+06
+b10100 !
+b10100 8
+b10100 @
+b1 D
+1%
+#280
+0%
+#285
+02
+b10 A
+06
+b1000 7
+b1000 B
+b1000 E
+b1000 I
+1/
+01
+b1 D
+1%
+#290
+0%
+#295
+16
+b1000 7
+b1000 B
+b1000 E
+b1000 I
+1/
+b10 D
+1%
+#300
+0%
+#305
+b0 A
+12
+11
+b1000 7
+b1000 B
+b1000 E
+b1000 I
+1/
+16
+b1111 M
+0(
+1%
+#310
+0%
+#315
+bx 5
+bx <
+bx 4
+bx F
+b1 A
+b0 7
+b0 B
+b0 E
+b0 I
+0/
+06
+b0 D
+b1111 "
+b1111 )
+b1111 9
+1(
+1%
+#320
+0%
+#325
+b11110 5
+b11110 <
+16
+b11110 4
+b11110 F
+02
+b10 A
+1/
+b1111 7
+b1111 B
+b1111 E
+b1111 I
+01
+b10 D
+1%
+#330
+0%
+#335
+b1 A
+b1111 7
+b1111 B
+b1111 E
+b1111 I
+1/
+16
+12
+b1111 H
+11
+1%
+#340
+0%
+#345
+b10 A
+b1111 7
+b1111 B
+b1111 E
+b1111 I
+1/
+06
+b11110 !
+b11110 8
+b11110 @
+b1 D
+1%
+#350
+0%
+#355
+16
+b1111 7
+b1111 B
+b1111 E
+b1111 I
+1/
+02
+b10 D
+01
+1%
+#360
+0%
+#365
+b1 A
+b1111 7
+b1111 B
+b1111 E
+b1111 I
+1/
+16
+12
+11
+1%
+#370
+0%
+#375
+b10 A
+b1111 7
+b1111 B
+b1111 E
+b1111 I
+1/
+06
+b1 D
+0(
+1%
+#380
+0%
+#385
+bx 5
+bx <
+bx 4
+bx F
+02
+b0 A
+06
+b0 7
+b0 B
+b0 E
+b0 I
+0/
+01
+b0 D
+1%
+#390
+0%
+#395
+1%
