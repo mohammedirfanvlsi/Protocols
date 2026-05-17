@@ -67,7 +67,7 @@ module tb_apb_top;
     $dumpvars(0, tb_apb_top);
 
     $monitor("time = %0t | clk = %b ,rst_n = %b,transfer = %b,read_write = %b,apb_write_data = %b,apb_write_addr = %b,apb_read_addr = %b,apb_read_data_out = %b",$time,clk,rst_n,transfer,read_write,apb_write_data,apb_write_addr,apb_read_addr,apb_read_data_out);
-
+ 
     // Init
     clk = 0;
     rst_n = 0;
@@ -85,6 +85,9 @@ module tb_apb_top;
     write_apb(9'd5,   8'd10);
     write_apb(9'd8,   8'd20);
     write_apb(9'd15, 8'd30);
+    
+
+
 
     // Reads
     read_apb(9'd5);
