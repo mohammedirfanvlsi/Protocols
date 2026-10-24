@@ -1,0 +1,131 @@
+module apb_tb;
+
+  // ----------------------------
+  // Testbench signals (drive DUT)
+  // ----------------------------
+  reg        clk;
+  reg        rst_n;
+  reg        read_write;
+  reg        transfer;
+  reg [7:0]  apb_write_data;
+  reg [8:0]  apb_write_addr;
+  reg [8:0]  apb_read_addr;
+
+  // ----------------------------
+  // Output from DUT
+  // ----------------------------
+  wire [7:0] apb_read_data_out;
+
+  // ----------------------------
+  // DUT instantiation (NAMED)
+  // ----------------------------
+  apb_top dut (
+    .clk(clk),
+    .rst_n(rst_n),
+    .read_write(read_write),
+    .transfer(transfer),
+    .apb_write_data(apb_write_data),
+    .apb_write_addr(apb_write_addr),
+    .apb_read_addr(apb_read_addr),
+    .apb_read_data_out(apb_read_data_out)
+  );
+
+  // ----------------------------
+  // Clock generation
+  // ----------------------------
+  initial begin
+    clk = 0;
+    forever #5 clk = ~clk;   // 10ns clock
+  end
+
+  // =========================================================
+  // TASK: APB WRITE
+  // =========================================================
+  task apb_write(input [8:0] addr, input [7:0] data);
+    begin
+      // SETUP phase
+      @(posedge clk);
+      transfer          = 1;
+      read_write        = 0;      // 0 = WRITE
+      apb_write_addr   = addr;
+      apb_write_data    = data;
+
+      // ACCESS phase: wait until slave is ready
+      wait (dut.pready == 1);
+
+      // End transfer
+      @(posedge clk);
+      transfer = 0;
+
+      // Display result
+      $display("[write] Addr=%0d (0x%0h)  Data=%0d (0x%0h)",
+               addr, addr, data, data);
+    end
+  endtask
+
+  // =========================================================
+  // TASK: APB READ
+  // =========================================================
+  task apb_read(input [8:0] addr);
+    begin
+      // SETUP phase
+      @(posedge clk);
+      transfer        = 1;
+      read_write      = 1;      // 1 = READ
+      apb_read_addr  = addr;
+
+      // ACCESS phase: wait until slave is ready
+      wait (dut.pready == 1);
+
+      // Capture data after ready
+      @(posedge clk);
+      transfer = 0;
+
+      // Display result
+      $display("[read ] Addr=%0d (0x%0h)  Data=%0d (0x%0h)",
+               addr, addr, apb_read_data_out, apb_read_data_out);
+    end
+  endtask
+
+  // =========================================================
+  // TEST SEQUENCE
+  // =========================================================
+  initial begin
+
+    // Waveform dump
+    $dumpfile("apb.vcd");
+    $dumpvars(0, apb_tb);
+
+    // Initial values
+    rst_n = 0;
+    transfer = 0;
+    read_write = 0;
+    apb_write_data = 0;
+    apb_write_addr = 0;
+    apb_read_addr = 0;
+
+    // Apply reset
+    #20;
+    rst_n = 1;
+
+    // ----------------------------
+    // WRITE operations
+    // ----------------------------
+    apb_write(9'd5,   8'd55);     // slave1
+    apb_write(9'd10,  8'd99);     // slave1
+    apb_write(9'd260, 8'd123);    // slave2
+    apb_write(9'd300, 8'd200);    // slave2
+
+    // ----------------------------
+    // READ operations
+    // ----------------------------
+    apb_read(9'd5);
+    apb_read(9'd10);
+    apb_read(9'd260);
+    apb_read(9'd300);
+
+    #50;
+    $finish;
+  end
+
+endmodule

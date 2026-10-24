@@ -1,0 +1,599 @@
+$date
+	Mon Oct 12 09:22:28 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module tb_axi $end
+$var wire 1 ! wr_done $end
+$var wire 1 " wr_data_req $end
+$var wire 1 # rd_done $end
+$var wire 1 $ rd_data_valid $end
+$var wire 32 % rd_data_out [31:0] $end
+$var parameter 32 & ADDR_WIDTH $end
+$var parameter 32 ' DATA_WIDTH $end
+$var parameter 32 ( ID_WIDTH $end
+$var parameter 32 ) MEM_DEPTH $end
+$var reg 1 * aclk $end
+$var reg 1 + aresetn $end
+$var reg 1 , init_read $end
+$var reg 1 - init_write $end
+$var reg 32 . rd_addr [31:0] $end
+$var reg 8 / rd_len [7:0] $end
+$var reg 32 0 wr_addr [31:0] $end
+$var reg 32 1 wr_data_in [31:0] $end
+$var reg 8 2 wr_len [7:0] $end
+$var integer 32 3 error_count [31:0] $end
+$var integer 32 4 rd_idx [31:0] $end
+$var integer 32 5 wr_idx [31:0] $end
+$scope module u_axi_top $end
+$var wire 1 * aclk $end
+$var wire 1 + aresetn $end
+$var wire 1 , init_read $end
+$var wire 1 - init_write $end
+$var wire 32 6 rd_addr [31:0] $end
+$var wire 8 7 rd_len [7:0] $end
+$var wire 32 8 wr_addr [31:0] $end
+$var wire 32 9 wr_data_in [31:0] $end
+$var wire 8 : wr_len [7:0] $end
+$var wire 1 ! wr_done $end
+$var wire 1 " wr_data_req $end
+$var wire 1 # rd_done $end
+$var wire 1 $ rd_data_valid $end
+$var wire 32 ; rd_data_out [31:0] $end
+$var wire 1 < axi_wvalid $end
+$var wire 4 = axi_wstrb [3:0] $end
+$var wire 1 > axi_wready $end
+$var wire 1 ? axi_wlast $end
+$var wire 32 @ axi_wdata [31:0] $end
+$var wire 1 A axi_rvalid $end
+$var wire 2 B axi_rresp [1:0] $end
+$var wire 1 C axi_rready $end
+$var wire 1 D axi_rlast $end
+$var wire 4 E axi_rid [3:0] $end
+$var wire 32 F axi_rdata [31:0] $end
+$var wire 1 G axi_bvalid $end
+$var wire 2 H axi_bresp [1:0] $end
+$var wire 1 I axi_bready $end
+$var wire 4 J axi_bid [3:0] $end
+$var wire 1 K axi_awvalid $end
+$var wire 3 L axi_awsize [2:0] $end
+$var wire 1 M axi_awready $end
+$var wire 8 N axi_awlen [7:0] $end
+$var wire 4 O axi_awid [3:0] $end
+$var wire 2 P axi_awburst [1:0] $end
+$var wire 32 Q axi_awaddr [31:0] $end
+$var wire 1 R axi_arvalid $end
+$var wire 3 S axi_arsize [2:0] $end
+$var wire 1 T axi_arready $end
+$var wire 8 U axi_arlen [7:0] $end
+$var wire 4 V axi_arid [3:0] $end
+$var wire 2 W axi_arburst [1:0] $end
+$var wire 32 X axi_araddr [31:0] $end
+$var parameter 32 Y ADDR_WIDTH $end
+$var parameter 32 Z DATA_WIDTH $end
+$var parameter 32 [ ID_WIDTH $end
+$var parameter 32 \ MEM_DEPTH $end
+$scope module u_axi_master $end
+$var wire 1 * aclk $end
+$var wire 1 + aresetn $end
+$var wire 1 , init_read $end
+$var wire 1 - init_write $end
+$var wire 32 ] m_axi_wdata [31:0] $end
+$var wire 32 ^ rd_addr [31:0] $end
+$var wire 32 _ rd_data_out [31:0] $end
+$var wire 1 $ rd_data_valid $end
+$var wire 8 ` rd_len [7:0] $end
+$var wire 32 a wr_addr [31:0] $end
+$var wire 32 b wr_data_in [31:0] $end
+$var wire 1 " wr_data_req $end
+$var wire 8 c wr_len [7:0] $end
+$var wire 1 > m_axi_wready $end
+$var wire 1 A m_axi_rvalid $end
+$var wire 2 d m_axi_rresp [1:0] $end
+$var wire 1 D m_axi_rlast $end
+$var wire 4 e m_axi_rid [3:0] $end
+$var wire 32 f m_axi_rdata [31:0] $end
+$var wire 1 G m_axi_bvalid $end
+$var wire 2 g m_axi_bresp [1:0] $end
+$var wire 4 h m_axi_bid [3:0] $end
+$var wire 1 M m_axi_awready $end
+$var wire 1 T m_axi_arready $end
+$var parameter 32 i ADDR_WIDTH $end
+$var parameter 32 j DATA_WIDTH $end
+$var parameter 32 k ID_WIDTH $end
+$var parameter 2 l R_ADDR $end
+$var parameter 2 m R_DATA $end
+$var parameter 2 n R_IDLE $end
+$var parameter 2 o W_ADDR $end
+$var parameter 2 p W_DATA $end
+$var parameter 2 q W_IDLE $end
+$var parameter 2 r W_RESP $end
+$var reg 32 s m_axi_araddr [31:0] $end
+$var reg 2 t m_axi_arburst [1:0] $end
+$var reg 4 u m_axi_arid [3:0] $end
+$var reg 8 v m_axi_arlen [7:0] $end
+$var reg 3 w m_axi_arsize [2:0] $end
+$var reg 1 R m_axi_arvalid $end
+$var reg 32 x m_axi_awaddr [31:0] $end
+$var reg 2 y m_axi_awburst [1:0] $end
+$var reg 4 z m_axi_awid [3:0] $end
+$var reg 8 { m_axi_awlen [7:0] $end
+$var reg 3 | m_axi_awsize [2:0] $end
+$var reg 1 K m_axi_awvalid $end
+$var reg 1 I m_axi_bready $end
+$var reg 1 C m_axi_rready $end
+$var reg 1 ? m_axi_wlast $end
+$var reg 4 } m_axi_wstrb [3:0] $end
+$var reg 1 < m_axi_wvalid $end
+$var reg 8 ~ r_beat_cnt [7:0] $end
+$var reg 2 !" r_state [1:0] $end
+$var reg 1 # rd_done $end
+$var reg 8 "" w_beat_cnt [7:0] $end
+$var reg 2 #" w_state [1:0] $end
+$var reg 1 ! wr_done $end
+$upscope $end
+$scope module u_axi_slave $end
+$var wire 1 * aclk $end
+$var wire 1 + aresetn $end
+$var wire 32 $" s_axi_araddr [31:0] $end
+$var wire 2 %" s_axi_arburst [1:0] $end
+$var wire 4 &" s_axi_arid [3:0] $end
+$var wire 8 '" s_axi_arlen [7:0] $end
+$var wire 3 (" s_axi_arsize [2:0] $end
+$var wire 1 R s_axi_arvalid $end
+$var wire 32 )" s_axi_awaddr [31:0] $end
+$var wire 2 *" s_axi_awburst [1:0] $end
+$var wire 4 +" s_axi_awid [3:0] $end
+$var wire 8 ," s_axi_awlen [7:0] $end
+$var wire 3 -" s_axi_awsize [2:0] $end
+$var wire 1 K s_axi_awvalid $end
+$var wire 1 I s_axi_bready $end
+$var wire 1 C s_axi_rready $end
+$var wire 32 ." s_axi_wdata [31:0] $end
+$var wire 1 ? s_axi_wlast $end
+$var wire 4 /" s_axi_wstrb [3:0] $end
+$var wire 1 < s_axi_wvalid $end
+$var parameter 32 0" ADDR_WIDTH $end
+$var parameter 32 1" DATA_WIDTH $end
+$var parameter 32 2" ID_WIDTH $end
+$var parameter 32 3" MEM_DEPTH $end
+$var parameter 2 4" S_R_DATA $end
+$var parameter 2 5" S_R_IDLE $end
+$var parameter 2 6" S_W_DATA $end
+$var parameter 2 7" S_W_IDLE $end
+$var parameter 2 8" S_W_RESP $end
+$var reg 32 9" rd_addr_reg [31:0] $end
+$var reg 8 :" rd_beat_cnt [7:0] $end
+$var reg 8 ;" rd_len_reg [7:0] $end
+$var reg 1 T s_axi_arready $end
+$var reg 1 M s_axi_awready $end
+$var reg 4 <" s_axi_bid [3:0] $end
+$var reg 2 =" s_axi_bresp [1:0] $end
+$var reg 1 G s_axi_bvalid $end
+$var reg 32 >" s_axi_rdata [31:0] $end
+$var reg 4 ?" s_axi_rid [3:0] $end
+$var reg 1 D s_axi_rlast $end
+$var reg 2 @" s_axi_rresp [1:0] $end
+$var reg 1 A s_axi_rvalid $end
+$var reg 1 > s_axi_wready $end
+$var reg 2 A" s_rstate [1:0] $end
+$var reg 2 B" s_wstate [1:0] $end
+$var reg 32 C" wr_addr_reg [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin $ivl_for_loop0 $end
+$var integer 32 D" i [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b10 8"
+b0 7"
+b1 6"
+b0 5"
+b1 4"
+b100000000 3"
+b100 2"
+b100000 1"
+b100000 0"
+b11 r
+b0 q
+b10 p
+b1 o
+b0 n
+b10 m
+b1 l
+b100 k
+b100000 j
+b100000 i
+b100000000 \
+b100 [
+b100000 Z
+b100000 Y
+b100000000 )
+b100 (
+b100000 '
+b100000 &
+$end
+#0
+$dumpvars
+bx D"
+b0 C"
+b0 B"
+b0 A"
+b0 @"
+b0 ?"
+b0 >"
+b0 ="
+b0 <"
+b0 ;"
+b0 :"
+b0 9"
+b1111 /"
+b0 ."
+b10 -"
+b0 ,"
+b0 +"
+b1 *"
+b0 )"
+b10 ("
+b0 '"
+b0 &"
+b1 %"
+b0 $"
+b0 #"
+b0 ""
+b0 !"
+b0 ~
+b1111 }
+b10 |
+b0 {
+b0 z
+b1 y
+b0 x
+b10 w
+b0 v
+b0 u
+b1 t
+b0 s
+b0 h
+b0 g
+b0 f
+b0 e
+b0 d
+b0 c
+b0 b
+b0 a
+b0 `
+b0 _
+b0 ^
+b0 ]
+b0 X
+b1 W
+b0 V
+b0 U
+0T
+b10 S
+0R
+b0 Q
+b1 P
+b0 O
+b0 N
+0M
+b10 L
+0K
+b0 J
+0I
+b0 H
+0G
+b0 F
+b0 E
+0D
+0C
+b0 B
+0A
+b0 @
+0?
+0>
+b1111 =
+0<
+b0 ;
+b0 :
+b0 9
+b0 8
+b0 7
+b0 6
+b0 5
+b0 4
+b0 3
+b0 2
+b0 1
+b0 0
+b0 /
+b0 .
+0-
+0,
+0+
+0*
+b0 %
+0$
+0#
+0"
+0!
+$end
+#5
+1*
+#10
+0*
+#15
+1*
+#20
+0*
+#25
+1+
+1*
+#30
+0*
+#35
+1*
+#40
+0*
+#45
+b1 #"
+1K
+b11 N
+b11 {
+b11 ,"
+b1 O
+b1 z
+b1 +"
+1-
+b11011110101011011011111011101111 @
+b11011110101011011011111011101111 ]
+b11011110101011011011111011101111 ."
+b11011110101011011011111011101111 1
+b11011110101011011011111011101111 9
+b11011110101011011011111011101111 b
+b11 2
+b11 :
+b11 c
+1*
+#50
+0*
+#55
+b1 B"
+1>
+b1 J
+b1 h
+b1 <"
+1M
+0-
+1*
+#60
+0*
+#65
+1"
+0M
+b10 #"
+1<
+0K
+1*
+#70
+0*
+#75
+b1 ""
+b100 C"
+b11001010111111101011101010111110 @
+b11001010111111101011101010111110 ]
+b11001010111111101011101010111110 ."
+b11001010111111101011101010111110 1
+b11001010111111101011101010111110 9
+b11001010111111101011101010111110 b
+b1 5
+1*
+#80
+0*
+#85
+b1000 C"
+b10 ""
+b10001001000100011001101000100 @
+b10001001000100011001101000100 ]
+b10001001000100011001101000100 ."
+b10001001000100011001101000100 1
+b10001001000100011001101000100 9
+b10001001000100011001101000100 b
+b10 5
+1*
+#90
+0*
+#95
+0"
+1?
+b11 ""
+b1100 C"
+b1010101011001100111011110001000 @
+b1010101011001100111011110001000 ]
+b1010101011001100111011110001000 ."
+b1010101011001100111011110001000 1
+b1010101011001100111011110001000 9
+b1010101011001100111011110001000 b
+b11 5
+1*
+#100
+0*
+#105
+b10 B"
+1G
+0>
+b10000 C"
+b11 #"
+1I
+0?
+0<
+1*
+#110
+0*
+#115
+b0 #"
+1!
+0I
+b0 B"
+0G
+1*
+#120
+0*
+#125
+b0 ""
+0!
+1*
+#130
+0*
+#135
+1*
+#140
+0*
+#145
+1*
+#150
+0*
+#155
+1*
+#160
+0*
+#165
+b1 !"
+1R
+b11 U
+b11 v
+b11 '"
+b1 V
+b1 u
+b1 &"
+1,
+b11 /
+b11 7
+b11 `
+1*
+#170
+0*
+#175
+b1 A"
+1A
+b11011110101011011011111011101111 %
+b11011110101011011011111011101111 ;
+b11011110101011011011111011101111 _
+b11011110101011011011111011101111 F
+b11011110101011011011111011101111 f
+b11011110101011011011111011101111 >"
+b1 E
+b1 e
+b1 ?"
+b11 ;"
+1T
+0,
+1*
+#180
+0*
+#185
+1$
+0T
+b10 !"
+1C
+0R
+1*
+#190
+0*
+#195
+b1 ~
+b11001010111111101011101010111110 %
+b11001010111111101011101010111110 ;
+b11001010111111101011101010111110 _
+b11001010111111101011101010111110 F
+b11001010111111101011101010111110 f
+b11001010111111101011101010111110 >"
+b100 9"
+b1 :"
+b1 4
+1*
+#200
+0*
+#205
+b10001001000100011001101000100 %
+b10001001000100011001101000100 ;
+b10001001000100011001101000100 _
+b10001001000100011001101000100 F
+b10001001000100011001101000100 f
+b10001001000100011001101000100 >"
+b1000 9"
+b10 :"
+b10 ~
+b10 4
+1*
+#210
+0*
+#215
+b11 ~
+1D
+b1010101011001100111011110001000 %
+b1010101011001100111011110001000 ;
+b1010101011001100111011110001000 _
+b1010101011001100111011110001000 F
+b1010101011001100111011110001000 f
+b1010101011001100111011110001000 >"
+b1100 9"
+b11 :"
+b11 4
+1*
+#220
+0*
+#225
+0$
+b0 A"
+0D
+0A
+b0 !"
+1#
+0C
+b100 4
+1*
+#230
+0*
+#235
+b0 ~
+0#
+b0 :"
+1*
+#240
+0*
+#245
+1*
+#250
+0*
+#255
+1*
+b100 D"
+#260
+0*
+#265
+1*
+#270
+0*
+#275
+1*
+#280
+0*
+#285
+1*
+#290
+0*
+#295
+1*
+#300
+0*
+#305
+1*
